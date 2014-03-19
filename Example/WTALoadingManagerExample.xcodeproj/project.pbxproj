@@ -1,0 +1,334 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FA676FF018D93F2700837EF9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA676FEF18D93F2700837EF9 /* Foundation.framework */; };
+		FA676FF218D93F2700837EF9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA676FF118D93F2700837EF9 /* CoreGraphics.framework */; };
+		FA676FF418D93F2700837EF9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA676FF318D93F2700837EF9 /* UIKit.framework */; };
+		FA676FFA18D93F2800837EF9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA676FF818D93F2800837EF9 /* InfoPlist.strings */; };
+		FA676FFC18D93F2800837EF9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA676FFB18D93F2800837EF9 /* main.m */; };
+		FA67700018D93F2800837EF9 /* WTAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA676FFF18D93F2800837EF9 /* WTAAppDelegate.m */; };
+		FA67700218D93F2800837EF9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA67700118D93F2800837EF9 /* Images.xcassets */; };
+		FA67702518D9405600837EF9 /* WTAFailedView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA67702018D9405600837EF9 /* WTAFailedView.m */; };
+		FA67702618D9405600837EF9 /* WTALoadingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA67702218D9405600837EF9 /* WTALoadingManager.m */; };
+		FA67702718D9405600837EF9 /* WTALoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA67702418D9405600837EF9 /* WTALoadingView.m */; };
+		FA67702A18D940A300837EF9 /* WTAEchoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA67702918D940A300837EF9 /* WTAEchoViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FA676FEC18D93F2700837EF9 /* WTALoadingManagerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WTALoadingManagerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA676FEF18D93F2700837EF9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FA676FF118D93F2700837EF9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FA676FF318D93F2700837EF9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		FA676FF718D93F2800837EF9 /* WTALoadingManagerExample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WTALoadingManagerExample-Info.plist"; sourceTree = "<group>"; };
+		FA676FF918D93F2800837EF9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FA676FFB18D93F2800837EF9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FA676FFD18D93F2800837EF9 /* WTALoadingManagerExample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WTALoadingManagerExample-Prefix.pch"; sourceTree = "<group>"; };
+		FA676FFE18D93F2800837EF9 /* WTAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WTAAppDelegate.h; sourceTree = "<group>"; };
+		FA676FFF18D93F2800837EF9 /* WTAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WTAAppDelegate.m; sourceTree = "<group>"; };
+		FA67700118D93F2800837EF9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		FA67700818D93F2800837EF9 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		FA67701F18D9405600837EF9 /* WTAFailedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTAFailedView.h; sourceTree = "<group>"; };
+		FA67702018D9405600837EF9 /* WTAFailedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTAFailedView.m; sourceTree = "<group>"; };
+		FA67702118D9405600837EF9 /* WTALoadingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTALoadingManager.h; sourceTree = "<group>"; };
+		FA67702218D9405600837EF9 /* WTALoadingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTALoadingManager.m; sourceTree = "<group>"; };
+		FA67702318D9405600837EF9 /* WTALoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTALoadingView.h; sourceTree = "<group>"; };
+		FA67702418D9405600837EF9 /* WTALoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTALoadingView.m; sourceTree = "<group>"; };
+		FA67702818D940A300837EF9 /* WTAEchoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTAEchoViewController.h; sourceTree = "<group>"; };
+		FA67702918D940A300837EF9 /* WTAEchoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTAEchoViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FA676FE918D93F2700837EF9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA676FF218D93F2700837EF9 /* CoreGraphics.framework in Frameworks */,
+				FA676FF418D93F2700837EF9 /* UIKit.framework in Frameworks */,
+				FA676FF018D93F2700837EF9 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FA676FE318D93F2700837EF9 = {
+			isa = PBXGroup;
+			children = (
+				FA67701E18D9405600837EF9 /* WTALoadingManager */,
+				FA676FF518D93F2800837EF9 /* WTALoadingManagerExample */,
+				FA676FEE18D93F2700837EF9 /* Frameworks */,
+				FA676FED18D93F2700837EF9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FA676FED18D93F2700837EF9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FA676FEC18D93F2700837EF9 /* WTALoadingManagerExample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FA676FEE18D93F2700837EF9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FA676FEF18D93F2700837EF9 /* Foundation.framework */,
+				FA676FF118D93F2700837EF9 /* CoreGraphics.framework */,
+				FA676FF318D93F2700837EF9 /* UIKit.framework */,
+				FA67700818D93F2800837EF9 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA676FF518D93F2800837EF9 /* WTALoadingManagerExample */ = {
+			isa = PBXGroup;
+			children = (
+				FA676FFE18D93F2800837EF9 /* WTAAppDelegate.h */,
+				FA676FFF18D93F2800837EF9 /* WTAAppDelegate.m */,
+				FA67702818D940A300837EF9 /* WTAEchoViewController.h */,
+				FA67702918D940A300837EF9 /* WTAEchoViewController.m */,
+				FA67700118D93F2800837EF9 /* Images.xcassets */,
+				FA676FF618D93F2800837EF9 /* Supporting Files */,
+			);
+			path = WTALoadingManagerExample;
+			sourceTree = "<group>";
+		};
+		FA676FF618D93F2800837EF9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FA676FF718D93F2800837EF9 /* WTALoadingManagerExample-Info.plist */,
+				FA676FF818D93F2800837EF9 /* InfoPlist.strings */,
+				FA676FFB18D93F2800837EF9 /* main.m */,
+				FA676FFD18D93F2800837EF9 /* WTALoadingManagerExample-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FA67701E18D9405600837EF9 /* WTALoadingManager */ = {
+			isa = PBXGroup;
+			children = (
+				FA67701F18D9405600837EF9 /* WTAFailedView.h */,
+				FA67702018D9405600837EF9 /* WTAFailedView.m */,
+				FA67702118D9405600837EF9 /* WTALoadingManager.h */,
+				FA67702218D9405600837EF9 /* WTALoadingManager.m */,
+				FA67702318D9405600837EF9 /* WTALoadingView.h */,
+				FA67702418D9405600837EF9 /* WTALoadingView.m */,
+			);
+			name = WTALoadingManager;
+			path = ../Classes;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FA676FEB18D93F2700837EF9 /* WTALoadingManagerExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA67701818D93F2800837EF9 /* Build configuration list for PBXNativeTarget "WTALoadingManagerExample" */;
+			buildPhases = (
+				FA676FE818D93F2700837EF9 /* Sources */,
+				FA676FE918D93F2700837EF9 /* Frameworks */,
+				FA676FEA18D93F2700837EF9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WTALoadingManagerExample;
+			productName = WTALoadingManagerExample;
+			productReference = FA676FEC18D93F2700837EF9 /* WTALoadingManagerExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FA676FE418D93F2700837EF9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = WTA;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "WillowTree Apps, Inc.";
+			};
+			buildConfigurationList = FA676FE718D93F2700837EF9 /* Build configuration list for PBXProject "WTALoadingManagerExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FA676FE318D93F2700837EF9;
+			productRefGroup = FA676FED18D93F2700837EF9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FA676FEB18D93F2700837EF9 /* WTALoadingManagerExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FA676FEA18D93F2700837EF9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA676FFA18D93F2800837EF9 /* InfoPlist.strings in Resources */,
+				FA67700218D93F2800837EF9 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FA676FE818D93F2700837EF9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA676FFC18D93F2800837EF9 /* main.m in Sources */,
+				FA67700018D93F2800837EF9 /* WTAAppDelegate.m in Sources */,
+				FA67702A18D940A300837EF9 /* WTAEchoViewController.m in Sources */,
+				FA67702518D9405600837EF9 /* WTAFailedView.m in Sources */,
+				FA67702718D9405600837EF9 /* WTALoadingView.m in Sources */,
+				FA67702618D9405600837EF9 /* WTALoadingManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FA676FF818D93F2800837EF9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA676FF918D93F2800837EF9 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FA67701618D93F2800837EF9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FA67701718D93F2800837EF9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FA67701918D93F2800837EF9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WTALoadingManagerExample/WTALoadingManagerExample-Prefix.pch";
+				INFOPLIST_FILE = "WTALoadingManagerExample/WTALoadingManagerExample-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		FA67701A18D93F2800837EF9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WTALoadingManagerExample/WTALoadingManagerExample-Prefix.pch";
+				INFOPLIST_FILE = "WTALoadingManagerExample/WTALoadingManagerExample-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FA676FE718D93F2700837EF9 /* Build configuration list for PBXProject "WTALoadingManagerExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA67701618D93F2800837EF9 /* Debug */,
+				FA67701718D93F2800837EF9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA67701818D93F2800837EF9 /* Build configuration list for PBXNativeTarget "WTALoadingManagerExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA67701918D93F2800837EF9 /* Debug */,
+				FA67701A18D93F2800837EF9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FA676FE418D93F2700837EF9 /* Project object */;
+}
