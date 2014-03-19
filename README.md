@@ -134,8 +134,8 @@ emptyView.messageLabel.text = @"No photos available for March 24, 2014";
 
 #### Async Operations and Core Data
 All asynchronous post-processing tasks should be done inside the `loadSuccess:completionHandler:` protocol method. Since this method accepts a completion block as a parameter (rather than returning a BOOL), it allows the view controller to dispatch to background threads and call `completion(BOOL)` only when the background task(s) have completed. If you the completion block before any async response processing, the loading manager will dismiss immediately and there will likely be a delay before your content is actually loaded. For example:
-```
 
+```
 - (void)loadSuccess:(id)response completionHandler:(void (^)(BOOL))completionHandler
 {
     [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
