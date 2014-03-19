@@ -3,6 +3,8 @@ WTALoadingManager
 
 A loading manager to help view controllers track and display loading state.
 
+MORE FLUFF HERE.
+
 ## Requirements
 
 `WTALoadingManager` requires Xcode 5 and ARC, and supports iOS versions 7.0 and above.
@@ -26,7 +28,7 @@ Requests to reload content should be sent from the view controller to the `loadi
 
 #### WTALoadingProtocol
 A view controller must implement `WTALoadingProtocol` in order to communicate with the `loadingManager`. Two methods are required:
-  * `-loadContentIgnoreCache:completionHandler:` This is the primary method for performing network requests, called by WTALoadingManager -reloadContent. Perform a standard network request and call `completion(error, response)` when finished so the loading manager can properly configure state. If `error != nil`, `-loadFailed` will be called, if implemented, and the failed view will be presented.
+  * `-loadContentIgnoreCache:completionHandler:` This is the primary method for performing network requests, called by `WTALoadingManager -reloadContent`. Perform a standard network request and call `completion(error, response)` when finished so the `loadingManager` can properly configure state. If `error != nil`, `-loadFailed` will be called, if implemented, and the failed view will be presented.
   * `loadSuccess:completionHandler:` Called upon a successful API response. Call `completion(BOOL)` when post-processing is complete to notify the loading manager of a success or fail. If `NO` is passed in the `completion` call, the failed view will be presented.
 
 ## Getting Started
