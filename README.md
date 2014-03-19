@@ -120,4 +120,22 @@ This manual method can also be used to cancel a request, which is useful when va
 ## Additional Functionality
 
 #### Async Operations and Core Data
-All asynchronous post-processing tasks should be done inside the `loadSuccess:completionHandler:` protocol method. Since this method accepts a completion block as a parameter (rather than returning a BOOL), it allows the view controller to dispatch to background threads and call `completion(BOOL)` only when the background task(s) have completed. If you do not call the completion block after any async response processing, the loading manager will dismiss
+All asynchronous post-processing tasks should be done inside the `loadSuccess:completionHandler:` protocol method. Since this method accepts a completion block as a parameter (rather than returning a BOOL), it allows the view controller to dispatch to background threads and call `completion(BOOL)` only when the background task(s) have completed. If you the completion block before any async response processing, the loading manager will dismiss immediately and there will likely be a delay before your content is actually loaded. For example:
+```
+
+- (void)loadSuccess:(id)response completionHandler:(void (^)(BOOL))completionHandler
+{
+    [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+
+        [WTAArticle MR_importFromArray:response inContext:localContext];
+        
+    } completion:^(BOOL success, NSError *error) {
+        
+        // call completion here
+        completionHandler(success);
+    }];
+    
+    // do NOT call completion here
+    completionHandler(YES);
+}
+```
