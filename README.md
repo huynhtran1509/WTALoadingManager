@@ -119,6 +119,19 @@ This manual method can also be used to cancel a request, which is useful when va
 
 ## Additional Functionality
 
+#### Custom Status Views
+The loading manager provides default loading, failed, and empty views. If you require a custom status view, just assign one to the loading manager, e.g.
+```
+WTACustomLoadingView *loadingView = [WTACustomLoadingView new];
+[self.loadingManager setLoadingView:loadingView];
+```
+
+If you want to keep the default status views and just want to change the message, you can do this at any time, e.g.
+```
+WTAFailedView *emptyView = (WTAFailedView *)self.loadingManager.emptyView;
+emptyView.messageLabel.text = @"No photos available for March 24, 2014";
+```
+
 #### Async Operations and Core Data
 All asynchronous post-processing tasks should be done inside the `loadSuccess:completionHandler:` protocol method. Since this method accepts a completion block as a parameter (rather than returning a BOOL), it allows the view controller to dispatch to background threads and call `completion(BOOL)` only when the background task(s) have completed. If you the completion block before any async response processing, the loading manager will dismiss immediately and there will likely be a delay before your content is actually loaded. For example:
 ```
