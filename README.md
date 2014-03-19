@@ -91,4 +91,32 @@ And that's it! For more, see the [full demo project](https://github.com/willowtr
 
 ## Use Cases
 
+#### Base View Controller
+In larger projects, it can be useful to use a base `UIViewController` subclass to avoid duplicating logic. If this is the case, it is a good idea to put the loading logic there. 
+
+```
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if ([self conformsToProtocol:@protocol(WTALoadingProtocol)])
+    {
+        [self.loadingManager reloadContent];   
+    }
+}
+```
+
+This way, any sublcass of your base view controller that conforms to `WTALoadingProtocol` will automatically reload when needed.
+
+#### Manual Reloads
+If your view controller needs to make one-off requests that differ from your `loadContentIgnoreCache:completionHandler` implementation, you can manually configure the loading/failed view by changing the `loadingStatus` on the `loadingManager`. For example, this will change the `loadingStatus` to "loading" and show the loading view:
+```
+[self.loadingManager setLoadingStatus:WTALoadingStatusLoading];
+```
+Since this is decoupled from the `loadingManager`'s`-reloadContent` logic, you will also need to dismiss the loading view.
+
+This manual method can also be used to cancel a request, which is useful when valid content has been obtained elsewhere and loading new content is no longer necessary (e.g. an async fetch request completes).
+
 ## Additional Functionality
+
+#### Async Operations and Core Data
