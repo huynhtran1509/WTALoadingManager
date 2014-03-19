@@ -115,8 +115,9 @@ If your view controller needs to make one-off requests that differ from your `lo
 ```
 Since this is decoupled from the `loadingManager`'s`-reloadContent` logic, you will also need to dismiss the loading view.
 
-This manual method can also be used to cancel a request, which is useful when valid content has been obtained elsewhere and loading new content is no longer necessary (e.g. an async fetch request completes).
+This manual method can also be used to cancel a request, which is useful when valid content has been obtained elsewhere and loading new content is no longer necessary (e.g. an async fetch request completes before the network request).
 
 ## Additional Functionality
 
 #### Async Operations and Core Data
+All asynchronous post-processing tasks should be done inside the `loadSuccess:completionHandler:` protocol method. Since this method accepts a completion block as a parameter (rather than returning a BOOL), it allows the view controller to dispatch to background threads and call `completion(BOOL)` only when the background task(s) have completed. If you do not call the completion block after any async response processing, the loading manager will dismiss
