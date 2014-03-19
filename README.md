@@ -34,6 +34,7 @@ A view controller must implement `WTALoadingProtocol` in order to communicate wi
 See the [self documenting header](https://github.com/willowtreeapps/WTALoadingManager/blob/master/Classes/WTALoadingManager.h) for full details.
 
 ## Getting Started
+#### Conform to Protocol
 First, conform to the `WTALoadingProtocol` in your UIViewController subclass:
 ```
 #import "WTALoadingManager.h"
