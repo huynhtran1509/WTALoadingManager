@@ -39,11 +39,18 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    // Tell the loading manager to reload the content
+    // The loading manager property is lazy loaded when accessed
+    // By default, a reload is only attempted the first time, or after any failed load
     [self.loadingManager reloadContent];
 }
 
 #pragma mark - Loading Protocol
 
+// Perform networking logic here.
+// Call completion(error, response) when finished
+// so the loading manager can properly configure state
 - (void)loadContentIgnoreCache:(BOOL)ignoreCache
              completionHandler:(void (^)(NSError *, id))completion
 {
@@ -59,6 +66,9 @@
     [task resume];
 }
 
+// Handle a successful API response here.
+// Call completion(BOOL) when post-processing is complete
+// to notify the loading manager of a load success or fail
 - (void)loadSuccess:(id)response completionHandler:(void (^)(BOOL))completionHandler
 {
     NSError *error;
@@ -67,7 +77,7 @@
                                                                    error:&error];
     self.responseLabel.text = [responseDict description];
     
-    BOOL success = error == nil;
+    BOOL success = (error == nil);
     completionHandler(success);
 }
 
