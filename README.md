@@ -3,7 +3,7 @@ WTALoadingManager
 
 A loading manager to help view controllers track and display loading state. `WTALoadingManager` formalizes all network operations in order to intelligently make network calls and present loading, failed, and empty views when necessary. 
 
-`WTALoadingManager` evolved from `MTLoadingViewController` and its need to decouple the loading logic from a `UIViewController` subclass. Now, all the logic is contained in a separate object, meaning the same logic can now be applied to a `UITableViewController` or `UICollectionViewController`.
+`WTALoadingManager` evolved from `MTLoadingViewController`'s need to decouple the loading logic from a `UIViewController` subclass. Now, all the logic is contained in a separate object, meaning the loading manager can now be used in a `UITableViewController` or `UICollectionViewController` subclass.
 
 ## Requirements
 
