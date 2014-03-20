@@ -169,7 +169,7 @@ typedef NS_ENUM(NSInteger, WTALoadingStatus)
  The Default initializer. Lazy loaded/called automatically when -loadingManager is called 
     for the first time.
  
- @param controller The view controller for receiving WTALoadingProtol messages and displaying 
+ @param controller The view controller for receiving WTALoadingProtocol messages and displaying
     status views
  @return An instance of WTALoading manager. Must be retained
  */
