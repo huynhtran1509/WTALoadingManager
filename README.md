@@ -1,7 +1,7 @@
 WTALoadingManager
 =================
 
-A loading manager to help view controllers track and display loading state. `WTALoadingManager` formalizes all network operations in order to intelligently make network calls and present loading, failed, and empty views when necessary. 
+`WTALoadingManager` is a loading manager to help view controllers track and display loading state. It formalizes all network operations in order to coordinate network calls and present loading, failed, and empty views when necessary. 
 
 `WTALoadingManager` evolved from `MTLoadingViewController`'s need to decouple the loading logic from a `UIViewController` subclass. Now, all the logic is contained in a separate object, meaning the loading manager can now be used in a `UITableViewController` or `UICollectionViewController` subclass.
 
@@ -11,7 +11,7 @@ A loading manager to help view controllers track and display loading state. `WTA
 
 ## Architecture
 
-#### WTALoadingManager
+### WTALoadingManager
 A default `WTALoadingManager` is available to any UIViewController as a property in a category. It is lazy loaded and retained, so there is no need to create one manually.
 
 ```
@@ -26,15 +26,15 @@ The `loadingManager` configures and presents loading UI based on its loading sta
 
 Requests to reload content should be sent from the view controller to the `loadingManager` via `-reloadContent`, or one of its sibling methods.
 
-#### WTALoadingProtocol
-A view controller must implement `WTALoadingProtocol` in order to communicate with the `loadingManager`. Of the many methods available, two methods are required:
+### WTALoadingProtocol
+A view controller must implement `WTALoadingProtocol` in order to communicate with the `loadingManager`. When a view controller asks the loading manager to reload, the methods below are called. Of the many protocol methods available, these two are required:
   * `-loadContentIgnoreCache:completionHandler:` This is the primary method for performing network requests, called by `WTALoadingManager -reloadContent`. Perform a standard network request and call `completion(error, response)` when finished so the `loadingManager` can properly configure state. If `error != nil`, `-loadFailed` will be called on the view controller, and the failed view will be presented.
-  * `loadSuccess:completionHandler:` Called upon a successful API response. Call `completion(BOOL)` when post-processing is complete to notify the loading manager of a success or fail. If `NO` is passed in the `completion` call, the failed view will be presented.
+  * `loadSuccess:completionHandler:` Called upon a successful API response. Call `completion(BOOL)` when post-processing is complete to notify the loading manager of a success or fail. If `NO` is passed in the `completion` call, the failed view will be presented. Otherwise, the loading view will be dismissed and the original view will be visible.
 
 See the [self documenting header](https://github.com/willowtreeapps/WTALoadingManager/blob/master/Classes/WTALoadingManager.h) for full details.
 
 ## Getting Started
-#### Conform to Protocol
+### Conform to the Protocol
 First, conform to the `WTALoadingProtocol` in your UIViewController subclass:
 ```
 #import "WTALoadingManager.h"
@@ -42,7 +42,7 @@ First, conform to the `WTALoadingProtocol` in your UIViewController subclass:
 @interface WTAEchoViewController () <WTALoadingProtocol>
 ```
 
-#### Initial Network Call
+### Initial Network Call
 To make the first request, reload content when the view controller's view appears.
 ```
 - (void)viewDidAppear:(BOOL)animated
@@ -51,9 +51,9 @@ To make the first request, reload content when the view controller's view appear
     self.loadingManager reloadContent];
 }
 ```
-By default, `-reloadContent` will only force a reload when no content has been loaded (e.g. on the first run, or after a failed load). For other behaviors, use `-reloadContent:(BOOL)forceReload` and `reloadContent:(BOOL)forceReload inBackground:(BOOL)background`.
+By default, `-reloadContent` will only force a reload when no content has been loaded (e.g. on the first run, or after a failed load). For other behaviors, use the sister methods `-reloadContent:(BOOL)forceReload` and `reloadContent:(BOOL)forceReload inBackground:(BOOL)background`.
 
-#### Implement Protocol Methods
+### Implement Protocol Methods
 Now that the `loadingManager` is fired up, implement the required protocol methods.
 
 ```
@@ -91,7 +91,7 @@ And that's it! For more, see the [full demo project](https://github.com/willowtr
 
 ## Use Cases
 
-#### Base View Controller
+### Base View Controller
 In larger projects, it can be useful to use a base `UIViewController` subclass to avoid duplicating logic. If this is the case, it is a good idea to put the loading logic there. 
 
 ```
@@ -108,18 +108,18 @@ In larger projects, it can be useful to use a base `UIViewController` subclass t
 
 This way, any sublcass of your base view controller that conforms to `WTALoadingProtocol` will automatically reload when needed.
 
-#### Manual Reloads
-If your view controller needs to make one-off requests that differ from your `loadContentIgnoreCache:completionHandler` implementation, you can manually configure the loading/failed view by changing the `loadingStatus` on the `loadingManager`. For example, this will change the `loadingStatus` to "loading" and show the loading view:
+### Manual Reloads
+If your view controller needs to make one-off requests that differ from your `loadContentIgnoreCache:completionHandler` implementation, you can manually configure the loading/failed view by changing the `loadingStatus` on the `loadingManager`. For example, this snippet will change the loading manager's `loadingStatus` to "loading" and present the loading view:
 ```
 [self.loadingManager setLoadingStatus:WTALoadingStatusLoading];
 ```
-Since this is decoupled from the `loadingManager`'s`-reloadContent` logic, you will also need to dismiss the loading view.
+Since this is decoupled from the `loadingManager`'s`-reloadContent` logic, you will also need to dismiss the loading view once any network operations are complete.
 
-This manual method can also be used to cancel a request, which is useful when valid content has been obtained elsewhere and loading new content is no longer necessary (e.g. an async fetch request completes before the network request).
+This manual method can also be used to "force" a loaded state, useful for when data has been obtained elsewhere and a loading view is no longer necessary (e.g. an async fetch request completes before the network request).
 
 ## Additional Functionality
 
-#### Custom Status Views
+### Custom Status Views
 The loading manager provides default loading, failed, and empty views. If you require a custom status view, just assign one to the loading manager, e.g.
 ```
 WTACustomLoadingView *loadingView = [WTACustomLoadingView new];
@@ -132,8 +132,32 @@ WTAFailedView *emptyView = (WTAFailedView *)self.loadingManager.emptyView;
 emptyView.messageLabel.text = @"No photos available for March 24, 2014";
 ```
 
-#### Async Operations and Core Data
-All asynchronous post-processing tasks should be done inside the `loadSuccess:completionHandler:` protocol method. Since this method accepts a completion block as a parameter (rather than returning a BOOL), it allows the view controller to dispatch to background threads and call `completion(BOOL)` only when the background task(s) have completed. If you the completion block before any async response processing, the loading manager will dismiss immediately and there will likely be a delay before your content is actually loaded. For example:
+### Additional Protocol Methods
+In addition to the two required protocol methods, there are many additional methods that the `loadingManager` can call on its view controller.
+
+#### Status Changes
+If implemented, a view controller can respond to specific loading status changes.
+ * `- (void)loadingStatusChanged:(WTALoadingStatus)loadingStatus`
+ * `- (void)loadCancelled:(NSError *)error`
+ * `- (void)loadFailed:(NSError *)error`
+ * `- (void)pagingFailed:(NSError *)error`
+
+#### Overrides
+If implemented, these methods give the view controller the chance to override the default behavior.
+ * `- (BOOL)shouldReload`
+ * `- (BOOL)shouldForceReload`
+ * `- (BOOL)shouldLoadInBackground`
+ * `- (BOOL)shouldShowFailedView`
+ * `- (BOOL)shouldShowEmptyView`
+
+#### Miscellaneous 
+ * `- (NSOperationQueue *)networkOperationQueue` for cancelling operations when new requests are made.
+ * `- (NSString *)errorMessageForError:(NSError *)error` allows the view controller to provide a custom error message.
+ 
+Documentation on all above methods is available in the [self documenting header](https://github.com/willowtreeapps/WTALoadingManager/blob/master/Classes/WTALoadingManager.h).
+
+### Async Operations and Core Data
+All asynchronous post-processing tasks should be done inside the `loadSuccess:completionHandler:` protocol method. Since this method accepts a completion block as a parameter (rather than returning a BOOL), the view controller can dispatch to background threads to call `completion(BOOL)` only when the background task(s) have completed. If you call the completion block before any async response processing, the loading manager will dismiss the loading view immediately and there will likely be a delay before your content is actually loaded. For example:
 
 ```
 - (void)loadSuccess:(id)response completionHandler:(void (^)(BOOL))completionHandler
