@@ -9,30 +9,6 @@ WTALoadingManager
 
 `WTALoadingManager` requires Xcode 5 and ARC, and supports iOS versions 7.0 and above.
 
-## Architecture
-
-### WTALoadingManager
-A default `WTALoadingManager` is available to any UIViewController as a property in a category. It is lazy loaded and retained, so there is no need to create one manually.
-
-```
-@interface UIViewController (WTALoadingManager)
-
-@property (nonatomic, strong) WTALoadingManager *loadingManager;
-
-@end
-```
-
-The `loadingManager` configures and presents loading UI based on its loading status. By default, it provides loading, failed, and empty views, but these can be assigned individually as well.
-
-Requests to reload content should be sent from the view controller to the `loadingManager` via `-reloadContent`, or one of its sibling methods.
-
-### WTALoadingProtocol
-A view controller must implement `WTALoadingProtocol` in order to communicate with the `loadingManager`. When a view controller asks its `loadingManager` to reload, the methods below are called by the `loadingManager` on the view controller. Of the many protocol methods available, these two are required:
-  * `-loadContentIgnoreCache:completionHandler:` This is the primary method for performing network requests, called by `WTALoadingManager -reloadContent`. Perform a standard network request and call `completion(error, response)` when finished so the `loadingManager` can properly configure state. If `error != nil`, `-loadFailed` will be called on the view controller, and the failed view will be presented.
-  * `loadSuccess:completionHandler:` Called upon a successful API response. Call `completion(BOOL)` when post-processing is complete to notify the `loadingManager` of a success or fail. If `NO` is passed in the `completion` call, the failed view will be presented. Otherwise, the loading view will be dismissed and the original view will be visible.
-
-See the [self documenting header](https://github.com/willowtreeapps/WTALoadingManager/blob/master/Classes/WTALoadingManager.h) for full details.
-
 ## Getting Started
 ### Installation with Cocoapods
 If you are not using cocoapods, clone this repo and copy the "Classes" directory into your project. Otherwise, create/update your Podfile to match the following. 
@@ -98,6 +74,30 @@ Now that the `loadingManager` is fired up, implement the required protocol metho
 ```
 
 And that's it! For more, see the [full demo project](https://github.com/willowtreeapps/WTALoadingManager/tree/master/Example).
+
+## Architecture
+
+### WTALoadingManager
+A default `WTALoadingManager` is available to any UIViewController as a property in a category. It is lazy loaded and retained, so there is no need to create one manually.
+
+```
+@interface UIViewController (WTALoadingManager)
+
+@property (nonatomic, strong) WTALoadingManager *loadingManager;
+
+@end
+```
+
+The `loadingManager` configures and presents loading UI based on its loading status. By default, it provides loading, failed, and empty views, but these can be assigned individually as well.
+
+Requests to reload content should be sent from the view controller to the `loadingManager` via `-reloadContent`, or one of its sibling methods.
+
+### WTALoadingProtocol
+A view controller must implement `WTALoadingProtocol` in order to communicate with the `loadingManager`. When a view controller asks its `loadingManager` to reload, the methods below are called by the `loadingManager` on the view controller. Of the many protocol methods available, these two are required:
+  * `-loadContentIgnoreCache:completionHandler:` This is the primary method for performing network requests, called by `WTALoadingManager -reloadContent`. Perform a standard network request and call `completion(error, response)` when finished so the `loadingManager` can properly configure state. If `error != nil`, `-loadFailed` will be called on the view controller, and the failed view will be presented.
+  * `loadSuccess:completionHandler:` Called upon a successful API response. Call `completion(BOOL)` when post-processing is complete to notify the `loadingManager` of a success or fail. If `NO` is passed in the `completion` call, the failed view will be presented. Otherwise, the loading view will be dismissed and the original view will be visible.
+
+See the [self documenting header](https://github.com/willowtreeapps/WTALoadingManager/blob/master/Classes/WTALoadingManager.h) for full details.
 
 ## Use Cases
 
