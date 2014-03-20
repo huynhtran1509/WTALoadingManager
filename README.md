@@ -35,13 +35,14 @@ See the [self documenting header](https://github.com/willowtreeapps/WTALoadingMa
 
 ## Getting Started
 ### Installation with Cocoapods
-If you are not using cocoapods, clone this repo and copy the "Classes" directory into your project. 
+If you are not using cocoapods, clone this repo and copy the "Classes" directory into your project. Otherwise, create/update your Podfile to match the following. 
 
 #### Podfile
 ```
 platform :ios, '7.0'
-pod "WTALoadingManager", "<latest_version_number>"
+pod "WTALoadingManager", :git => 'git@github.com:willowtreeapps/WTALoadingManager.git', :tag => '0.0.1'
 ```
+`WTALoadingManager` is not currently in the master cocoapods repo, as it is still under development.
 
 ### Conform to the Protocol
 First, conform to the `WTALoadingProtocol` in your UIViewController subclass:
