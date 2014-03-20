@@ -34,6 +34,15 @@ A view controller must implement `WTALoadingProtocol` in order to communicate wi
 See the [self documenting header](https://github.com/willowtreeapps/WTALoadingManager/blob/master/Classes/WTALoadingManager.h) for full details.
 
 ## Getting Started
+### Installation with Cocoapods
+If you are not using cocoapods, clone this repo and copy the "Classes" directory into your project. 
+
+#### Podfile
+```
+platform :ios, '7.0'
+pod "WTALoadingManager", "<latest_version_number>"
+```
+
 ### Conform to the Protocol
 First, conform to the `WTALoadingProtocol` in your UIViewController subclass:
 ```
@@ -176,3 +185,6 @@ All asynchronous post-processing tasks should be done inside the `loadSuccess:co
     completionHandler(YES);
 }
 ```
+
+## License
+WTALoadingManager is available under the MIT license. See the [LICENSE](https://github.com/willowtreeapps/WTALoadingManager/blob/master/LICENSE) file for more info.
