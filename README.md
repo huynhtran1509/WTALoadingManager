@@ -34,7 +34,7 @@ To make the first request, reload content when the view controller's view appear
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.loadingManager reloadContent];
+    [self.loadingManager reloadContent];
 }
 ```
 By default, `-reloadContent` will only force a reload when no content has been loaded (e.g. on the first run, or after a failed load). For other behaviors, use the sister methods `-reloadContent:(BOOL)forceReload` and `reloadContent:(BOOL)forceReload inBackground:(BOOL)background`.
