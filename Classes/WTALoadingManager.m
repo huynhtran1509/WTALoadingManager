@@ -212,10 +212,6 @@ const char *WTALoadingManagerLazyLoadKey = "WTALoadingManagerLazyLoadKey";
             [operationQueue cancelAllOperations];
         }
         
-        if (self.loadingStatus == WTALoadingStatusEmpty)
-        {
-            [self setLoadingStatus:WTALoadingStatusLoading];
-        }
         else if (background)
         {
             [self setLoadingStatus:WTALoadingStatusBackgroundRefreshing];
