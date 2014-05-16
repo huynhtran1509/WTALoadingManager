@@ -172,9 +172,9 @@ All asynchronous post-processing tasks should be done inside the `loadSuccess:co
 ```
 - (void)loadSuccess:(id)response completionHandler:(void (^)(BOOL))completionHandler
 {
-    [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+    [WTADataLayer saveWithBlock:^{
 
-        [WTAArticle MR_importFromArray:response inContext:localContext];
+        [WTAArticle importFromArray:response];
         
     } completion:^(BOOL success, NSError *error) {
         
