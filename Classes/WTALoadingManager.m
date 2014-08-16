@@ -98,7 +98,8 @@ const char *WTALoadingManagerLazyLoadKey = "WTALoadingManagerLazyLoadKey";
         case WTALoadingStatusLoading:
         case WTALoadingStatusForegroundRefreshing:
         {
-            [self animateStatusView:self.loadingView visible:YES];
+            BOOL animated = self.loadingStatus != WTALoadingStatusPreLoading;
+            [self animateStatusView:self.loadingView visible:YES animated:animated];
             [self animateStatusView:self.failedView visible:NO];
             [self animateStatusView:self.emptyView visible:NO];
             
@@ -335,6 +336,11 @@ const char *WTALoadingManagerLazyLoadKey = "WTALoadingManagerLazyLoadKey";
 
 - (void)animateStatusView:(UIView *)statusView visible:(BOOL)visible
 {
+    [self animateStatusView:statusView visible:visible animated:YES];
+}
+
+- (void)animateStatusView:(UIView *)statusView visible:(BOOL)visible animated:(BOOL)animated
+{
     [self.viewController.view bringSubviewToFront:statusView];
     if (self.parentScrollView)
     {
@@ -347,7 +353,7 @@ const char *WTALoadingManagerLazyLoadKey = "WTALoadingManagerLazyLoadKey";
     
     statusView.hidden = NO;
     
-    [UIView animateWithDuration:.3
+    [UIView animateWithDuration:animated ? .3 : 0.
                      animations:
      ^{
          statusView.alpha = alpha;
